@@ -9,10 +9,8 @@ public class AgeInfo {
 
         if (inputAge < 1) {
             System.out.println("Вы слишком малы");
-
         } else if (inputAge > 112) {
             System.out.println("Вы слишком стары");
-
         } else {
             String ageByWord = getAgeMeasureWord(inputAge);
             System.out.printf("Вам %d %s.", inputAge, ageByWord);
@@ -21,16 +19,17 @@ public class AgeInfo {
 
     private static String getAgeMeasureWord(int age) {
         int unitDigit = age % 10;
-        int tenDigit = ((age - unitDigit) % 100) / 10;
+        int tenDigit = (age % 100) / 10;
+        String word;
 
         if (tenDigit != 1 && unitDigit == 1) {
-            return "год";
-
+            word = "год";
         } else if ((1 < unitDigit && unitDigit <= 4) && tenDigit != 1) {
-            return "года";
-
+            word =  "года";
         } else {
-            return "лет";
+            word = "лет";
         }
+
+        return word;
     }
 }
